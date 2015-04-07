@@ -690,6 +690,9 @@ var toggleExceptionMode = (function() {
         }
         exceptionMode = newState;
 
+        // For a visually clean mode switch
+        highlightElements([], true);
+
         pickerRoot.contentDocument.getElementById('exmode').classList.toggle('on', exceptionMode);
         svgRoot.classList.toggle('exmode', exceptionMode);
 
@@ -982,7 +985,7 @@ var startPicker = function(details) {
     }
 
     // Live cosmetic filters: to be used when the picker is in exception mode.
-    liveCosmeticFilters = details.liveCosmeticFilters || [];
+    liveCosmeticFilters = details.liveCosmeticFilters;
     if ( liveCosmeticFilters.length === 0 ) {
         dialog.querySelector('#exmode').style.display = 'none';
     }

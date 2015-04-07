@@ -577,7 +577,7 @@ var onMessage = function(request, sender, callback) {
         case 'liveCosmeticFilteringData':
             if ( pageStore ) {
                 pageStore.liveCosmeticFilteredCount = request.filteredCount;
-                pageStore.liveCosmeticFilters = request.selectors.split(/\s*,\s*\n\s*/);
+                pageStore.liveCosmeticFilters = request.selectors;
             }
             break;
 
