@@ -52,15 +52,14 @@ var i;
 var styles = vAPI.styles || [];
 i = styles.length;
 while ( i-- ) {
-    selectors.push(styles[i].textContent.replace(reProperties, ''));
+    selectors = selectors.concat(styles[i].textContent.replace(reProperties, '').split(/\s*,\n\s*/));
 }
-selectors = selectors.join(',\n');
 
 var elems = [];
 
 if ( selectors.length !== 0 ) {
     try {
-        elems = document.querySelectorAll(selectors);
+        elems = document.querySelectorAll(selectors.join(','));
     } catch (e) {
     }
 }
