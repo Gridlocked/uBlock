@@ -433,7 +433,7 @@ var cosmeticFilterFromElement = function(elem, out) {
 
     var selector = prefix + suffix.join('');
 
-    // https://github.com/gorhill/uBlock/issues/637
+    // https://github.com/chrisaljoudi/uBlock/issues/637
     // If the selector is still ambiguous at this point, further narrow using
     // `nth-of-type`. It is preferable to use `nth-of-type` as opposed to
     // `nth-child`, as `nth-of-type` is less volatile.
@@ -512,7 +512,7 @@ var elementsFromFilter = function(filter) {
     // Net filters: we need to lookup manually -- translating into a
     // foolproof CSS selector is just not possible
 
-    // https://github.com/gorhill/uBlock/issues/945
+    // https://github.com/chrisaljoudi/uBlock/issues/945
     // Transform into a regular expression, this allows the user to edit and
     // insert wildcard(s) into the proposed filter
     var reStr = '';
@@ -848,7 +848,7 @@ var onSvgClicked = function(ev) {
         return;
     }
 
-    // https://github.com/gorhill/uBlock/issues/810#issuecomment-74600694
+    // https://github.com/chrisaljoudi/uBlock/issues/810#issuecomment-74600694
     // Unpause picker if user click outside dialog
     if ( dialog.parentNode.classList.contains('paused') ) {
         unpausePicker();
@@ -882,7 +882,7 @@ var onKeyPressed = function(ev) {
 
 /******************************************************************************/
 
-// https://github.com/gorhill/uBlock/issues/190
+// https://github.com/chrisaljoudi/uBlock/issues/190
 // May need to dynamically adjust the height of the overlay + new position
 // of highlighted elements.
 
