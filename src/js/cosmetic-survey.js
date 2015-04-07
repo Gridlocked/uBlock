@@ -31,13 +31,13 @@
 
 // https://github.com/gorhill/uBlock/issues/464
 if ( document instanceof HTMLDocument === false ) {
-    //console.debug('cosmetic-on.js > not a HTLMDocument');
+    //console.debug('cosmetic-survey.js > not a HTLMDocument');
     return;
 }
 
 // This can happen
 if ( !vAPI ) {
-    //console.debug('cosmetic-count.js > no vAPI');
+    //console.debug('cosmetic-survey.js > vAPI not found');
     return;
 }
 
@@ -54,12 +54,13 @@ i = styles.length;
 while ( i-- ) {
     selectors.push(styles[i].textContent.replace(reProperties, ''));
 }
+selectors = selectors.join(',\n');
 
 var elems = [];
 
 if ( selectors.length !== 0 ) {
     try {
-        elems = document.querySelectorAll(selectors.join(','));
+        elems = document.querySelectorAll(selectors);
     } catch (e) {
     }
 }
@@ -69,8 +70,9 @@ if ( selectors.length !== 0 ) {
 var localMessager = vAPI.messaging.channel('cosmetic-*.js');
 
 localMessager.send({
-    what: 'hiddenElementCount',
-    count: elems.length
+    what: 'liveCosmeticFilteringData',
+    filteredCount: elems.length,
+    selectors: selectors
 }, function() {
     localMessager.close();
 });
