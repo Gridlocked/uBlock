@@ -354,7 +354,7 @@ var matchWhitelistDirective = function(url, hostname, directive) {
 /******************************************************************************/
 
 µBlock.toggleHostnameSwitch = function(details) {
-    if ( this.hnSwitches.toggleZ(details.name, details.hostname, details.state) ) {
+    if ( this.hnSwitches.toggleZ(details.name, details.hostname, !!details.deep, details.state) ) {
         this.saveHostnameSwitches();
     }
 
