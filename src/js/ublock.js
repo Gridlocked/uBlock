@@ -284,12 +284,12 @@ var matchWhitelistDirective = function(url, hostname, directive) {
         vAPI.tabs.injectScript(tabId, { file: 'js/epicker.js' });
     };
 
-    this.getLiveCosmeticFilteringData(tabId, onReady);
+    this.surveyCosmeticFiltering(tabId, onReady);
 };
 
 /******************************************************************************/
 
-µBlock.getLiveCosmeticFilteringData = function(tabId, callback) {
+µBlock.surveyCosmeticFiltering = function(tabId, callback) {
     callback = callback || this.noopFunc;
     vAPI.tabs.injectScript(tabId, { file: 'js/cosmetic-survey.js' }, callback);
 };

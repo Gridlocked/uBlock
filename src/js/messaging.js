@@ -295,7 +295,7 @@ var getPopupDataLazy = function(tabId, callback) {
         return;
     }
 
-    µb.getLiveCosmeticFilteringData(tabId, function() {
+    µb.surveyCosmeticFiltering(tabId, function() {
         r.liveCosmeticFilteredCount = pageStore.liveCosmeticFilteredCount;
         callback(r);
     });

@@ -851,7 +851,7 @@ var onSvgClicked = function(ev) {
         return;
     }
 
-    // https://github.com/gorhill/uBlock/issues/810#issuecomment-74600694
+    // https://github.com/chrisaljoudi/uBlock/issues/810#issuecomment-74600694
     // Unpause picker if user click outside dialog
     if ( dialog.parentNode.classList.contains('paused') ) {
         unpausePicker();

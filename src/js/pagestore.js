@@ -477,7 +477,6 @@ PageStore.prototype.init = function(tabId) {
     this.perLoadAllowedRequestCount = 0;
     this.liveCosmeticFilteredCount = 0;
     this.liveCosmeticFilters = [];
-    this.skipLocalMirroring = false;
     this.netFilteringCache = NetFilteringResultCache.factory();
 
     // Support `elemhide` filter option. Called at this point so the required
