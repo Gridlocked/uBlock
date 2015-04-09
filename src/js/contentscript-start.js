@@ -40,7 +40,7 @@ if ( document instanceof HTMLDocument === false ) {
     return false;
 }
 
-// Because in case
+// This can happen
 if ( !vAPI ) {
     //console.debug('contentscript-start.js > vAPI not found');
     return;

@@ -35,9 +35,9 @@ if ( document instanceof HTMLDocument === false ) {
     return;
 }
 
-// Because in case
+// This can happen
 if ( !vAPI ) {
-    //console.debug('cosmetic-on.js > vAPI not found');
+    //console.debug('cosmetic-on.js > no vAPI');
     return;
 }
 

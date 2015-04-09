@@ -21,8 +21,6 @@
 
 // For non background pages
 
-/* global self */
-
 /******************************************************************************/
 
 (function(self) {
@@ -45,6 +43,29 @@ vAPI.vapiClientInjected = true;
 vAPI.sessionId = String.fromCharCode(Date.now() % 25 + 97) +
     Math.random().toString(36).slice(2);
 vAPI.chrome = true;
+
+/******************************************************************************/
+
+vAPI.shutdown = (function() {
+    var jobs = [];
+
+    var add = function(job) {
+        jobs.push(job);
+    };
+
+    var exec = function() {
+        //console.debug('Shutting down...');
+        var job;
+        while ( job = jobs.pop() ) {
+            job();
+        }
+    };
+
+    return {
+        add: add,
+        exec: exec
+    };
+})();
 
 /******************************************************************************/
 
@@ -136,12 +157,26 @@ vAPI.messaging = {
             },
             close: function() {
                 delete vAPI.messaging.channels[this.channelName];
+                if ( Object.keys(vAPI.messaging.channels).length === 0 ) {
+                    vAPI.messaging.close();
+                }
             }
         };
 
         return this.channels[channelName];
     }
 };
+
+/******************************************************************************/
+
+// No need to have vAPI client linger around after shutdown if
+// we are not a top window (because element picker can still
+// be injected in top window).
+if ( window !== window.top ) {
+    vAPI.shutdown.add(function() {
+        vAPI = null;
+    });
+}
 
 /******************************************************************************/
 
